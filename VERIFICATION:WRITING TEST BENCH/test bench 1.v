@@ -1,4 +1,4 @@
-odule top_module ( output reg A, output reg B );
+module top_module ( output reg A, output reg B );
     initial begin
        A=0;
        B=0;
