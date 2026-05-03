@@ -5,11 +5,10 @@ module top_module (
     output q,
     output state
 );
-    reg state_reg=0;
-    assign state=state_reg;
-    always @(posedge clk) begin
-        state_reg<=(a&b)|(state_reg&(a|b));
-    end
-    assign q=(a&b)|(state_reg&a);
+  reg next;
+    assign next=~a&b&state|a&(b|state);
+    always @(posedge clk) 
+        state<=next;
+    assign q=a^b^state;
 
 endmodule
